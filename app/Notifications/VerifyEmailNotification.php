@@ -3,19 +3,19 @@
 namespace App\Notifications;
 
 use App\Models\User;
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
-class VerifyEmailNotification extends Notification
+class VerifyEmailNotification extends VerifyEmail
 {
     use Queueable;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct(public User $user)
+    public function __construct()
     {
         //
     }
@@ -25,7 +25,7 @@ class VerifyEmailNotification extends Notification
      *
      * @return array<int, string>
      */
-    public function via(object $notifiable): array
+    public function via($notifiable): array
     {
         return ['mail'];
     }
@@ -33,14 +33,16 @@ class VerifyEmailNotification extends Notification
     /**
      * Get the mail representation of the notification.
      */
-    public function toMail(object $notifiable): MailMessage
+    public function toMail($notifiable): MailMessage
     {
+        $url = $this->verificationUrl($notifiable);
         return (new MailMessage)
-            ->greeting('Olá, '. $this->user->name)
+            ->greeting('Olá, '. $notifiable->name)
             ->subject('Verifique seu email!')
             ->line('verifique seu email para se autenticar no sistema da nossa barbearia.')
-            ->action('Notification Action', url('/'))
-            ->line('Se você não reconhece essa ação, ignore.');
+            ->action('Notification Action', url($url))
+            ->line('Se você não reconhece essa ação, ignore.')
+            ->line('Atenciosamente, Barbearia.');
     }
 
     /**

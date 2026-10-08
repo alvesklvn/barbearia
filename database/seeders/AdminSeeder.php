@@ -16,7 +16,7 @@ class AdminSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'barbeiro',
             'email' => 'admin@barbearia.com',
-            'cellphone' => '(12) 99215-4660',
+            'cellphone' => '+5599999999999',
             'email_verified_at' => now(),
             'role_id' => '2',
             'password_hash' => "\$2y\$12\$/TupAjbh4ryrCj9ZndErQuEqPrRO7uy82kaQNJPjojZHdgttRJIoe",

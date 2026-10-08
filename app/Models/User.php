@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Notifications\VerifyEmailNotification;
 use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -21,7 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
-    protected array $fillable = [
+    protected $fillable = [
         'name',
         'email',
         'cellphone',
@@ -64,6 +66,6 @@ class User extends Authenticatable implements MustVerifyEmail
     #[Override]
     public function sendEmailVerificationNotification()
     {
-        $this->notify()
+        $this->notify(new VerifyEmailNotification());
     }
 }
