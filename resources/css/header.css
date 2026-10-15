@@ -4,32 +4,34 @@
 
 #header-mobile{
     display: flex;
-    align-items: flex-start;
+    align-items: flex-center;
 }
 
 .menu-hamburguer{
     width: 40px;
-    margin: 5px 20px 0px auto;
+    margin: 15px 20px 0px 0px;
     display: block;
     cursor: pointer;
 }
 
 #header-mobile .logo{
+    padding-bottom: 10px;
     width: 110px;
-    margin: 3px auto 0px 10px;
+    margin: 15px auto 0px 20px;
 }
 
 nav.mobile{
     height: 100vh;
     width: 40vw;
-    background-color: rgba(55, 55, 55, 0.34);
+    background-color: white;
     box-shadow: 0px 0px 20px 6px #1b1b1b1c;
     display: none;
     flex-direction: column;
     align-items: center;
     gap: 35px;
     padding: 30px;
-    position: relative;
+    position: absolute;
+    right: 0;
 }
 
 nav.mobile img{
@@ -69,7 +71,64 @@ nav.mobile ul a{
         display: none;
     }
 
-    #header-desktop{
-        display: flex;
+    body{
+        margin: 15px 30px 0px 30px;
     }
+
+    #header-desktop{
+        padding: 8px;
+        display: flex;
+        align-items: center;
+    }
+
+    #header-desktop .logo{
+        width: 120px;
+    }
+
+    #header-desktop nav.desktop{
+        display: flex;
+        gap: 40px;
+        margin: 0 auto;
+    }
+
+    #header-desktop ul{
+        margin-right: auto;
+        display: flex;
+        gap: 40px;
+        list-style: none;
+    }
+
+    #header-desktop a{
+        color: black;
+        margin-right: 20px;
+    }
+
+    #header-desktop a:hover{
+        text-decoration: underline;
+    }
+
+    #header-desktop .btn-agendamento{
+        padding: 10px 15px;
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        box-shadow: 0px 0px 20px 6px #1b1b1b1c;
+    }
+
+    #header-desktop .btn-agendamento:hover{
+        transition-duration: 0.2s;
+        background-color: rgb(36, 36, 36);
+        box-shadow: 0px 0px 20px 6px #0000004e;
+    }
+
+}
+
+#header-mobile,
+#header-desktop {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background-color: white;
 }
