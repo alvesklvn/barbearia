@@ -27,7 +27,7 @@ class RegisterRequest extends FormRequest
             'name' => 'required|string|regex:/^[A-Za-zÀ-ú 0-9_-]+$/|min:5|max:15',
             'email' => 'required|string|email:rfc,dns',
             'password' => ['required', 'string', Password::min(8)->letters()->numbers()->symbols(), 'max:20'],
-            'cellphone' => 'required|string|regex:/^[+]{1}[0-9]+$/|min:13|max:15',
+            'cellphone' => 'required|string|regex:/^[0-9]+$/|min:9|max:14',
             'created_at' => now(),
             'updated_at' => now()
         ];

@@ -42,9 +42,9 @@ class AuthService
         $user = User::where('email', $data['email'])->whereNotNull('email_verified_at')->first();
 
         if(!$user){
-            $hashed = $user->password_hash;
+            $hashed = self::DUMMY_HASH; 
         } else {
-            $hashed = self::DUMMY_HASH;   
+            $hashed = $user->password_hash;
         }
 
         $isCorrectPassword = Hash::check($data['password'], $hashed);

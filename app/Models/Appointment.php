@@ -8,7 +8,7 @@ use Override;
 
 class Appointment extends Model
 {
-    protected array $fillable = [
+    protected $fillable = [
         'user_id',
         'barber_id',
         'service_id',
@@ -45,8 +45,8 @@ class Appointment extends Model
         return $this->belongsTo(Barber::class);
     }
 
-    public function appointment(): BelongsTo
+    public function service(): BelongsTo
     {
-        return $this->belongsTo(Appointment::class);
+        return $this->belongsTo(Service::class);
     }
 }

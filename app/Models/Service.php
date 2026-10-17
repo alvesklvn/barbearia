@@ -8,7 +8,7 @@ use Override;
 
 class Service extends Model
 {
-    protected array $fillable = [
+    protected $fillable = [
         'price',
         'title',
         'description',

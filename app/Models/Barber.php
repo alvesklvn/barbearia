@@ -9,7 +9,7 @@ use Override;
 
 class Barber extends Model
 {
-    protected array $fillable = [
+    protected $fillable = [
         'user_id',
         'created_at',
         'updated_at'
