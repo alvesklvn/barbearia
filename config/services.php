@@ -35,12 +35,4 @@ return [
         ],
     ],
 
-    [
-        'green_api' => [
-            'url' => env('GREEN_API_URL'),
-            'instance' => env('710722770844'),
-            'token' => env('54ce18bc920e4670ae37177439b788f762afb5c284d94261b4')
-        ]
-    ]
-
 ];

@@ -29,17 +29,6 @@ class AppointmentService
                 'scheduled_at' => $data['scheduled_at'],
                 'created_at' => now()
             ]);
-
-            $url = rtrim(config('services.green_api.url'), '/');
-            $instance = config('services.green_api.instance');
-            $token = config('services.green_api.token');
-            Http::post(
-                "{$url}/waInstance{$instance}/sendMessage/{$token}",
-                [
-                    'chatId' => $user->cellphone . '@c.us',
-                    'message' => "serviço: {$service->title}\ndata:{$data['scheduled_at']}"
-                ]
-            );
             return true;
         } catch(\Throwable $e) {
             return false;
