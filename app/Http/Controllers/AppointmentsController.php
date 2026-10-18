@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAppointmentRequest;
+use App\Models\Appointment;
 use App\Services\AppointmentService;
 use Illuminate\Http\Request;
 
@@ -23,5 +24,18 @@ class AppointmentsController extends Controller
         }
 
         return response()->json(["message" => "erro ao agendar um horário"]);
+    }
+
+    public function destroy(Request $request, Appointment $appointment)
+    {
+        try{
+            $user = $request->user();
+            $appointment->status = "canceled";
+            $appointment->updated_at = now();
+            $appointment->save();
+            return response()->json(["message" => "agendamento cancelado com sucesso"]);
+        } catch (\Throwable $e){
+            return response()->json(["message" => "não foi possivel cancelar esse agendamento"], 422);
+        }
     }
 }

@@ -19,7 +19,8 @@ class AdminSeeder extends Seeder
             'cellphone' => '+5599999999999',
             'email_verified_at' => now(),
             'role_id' => '2',
-            'password_hash' => "\$2y\$12\$/TupAjbh4ryrCj9ZndErQuEqPrRO7uy82kaQNJPjojZHdgttRJIoe",
+            #a senha do login de barbeiro é "admin123_"
+            'password_hash' => "\$2y\$12\$H8PVr24GQwrYMr2/kWSUgO.9rZNmmmJOqhFSA9G7wVpp3XhNzR7Pi",
             'created_at' => now(),
             'updated_at' => now()
         ]);

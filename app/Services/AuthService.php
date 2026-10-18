@@ -25,7 +25,8 @@ class AuthService
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password_hash' => Hash::make($data['password']),
-                'cellphone' => $data['cellphone']
+                'cellphone' => $data['cellphone'],
+                'created_at' => now()
             ]);        
 
             SendEmailVerificationJob::dispatch($user)->onQueue('emails');
@@ -59,7 +60,7 @@ class AuthService
 
     public function verify(int $id, string $hash)
     {
-        $user = User::whereNull('email_verified_at')->findOrFail($id);
+        $user = User::where('email_verified_at')->findOrFail($id);
 
         if(!$user){
             return false;
