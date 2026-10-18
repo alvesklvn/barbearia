@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('barber_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('service_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('service_id')->constrained();
             $table->decimal('price', 6, 2);
             $table->dateTime('scheduled_at');
             $table->enum('status', ['pending', 'completed', 'canceled'])->default('pending');

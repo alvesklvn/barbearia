@@ -22,6 +22,6 @@ class IsBarberMiddleware
             return $next($request);
         }
 
-        return response()->json(["message" => "você não pode adicionar um serviço no sistema"], 403);
+        return response()->json(["message" => "você não é um barbeiro"], 403);
     }
 }

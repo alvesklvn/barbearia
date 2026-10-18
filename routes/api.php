@@ -31,9 +31,12 @@ Route::prefix('auth')->group(function () {
 
 Route::prefix('services')->group(function () {
     Route::post('store', [ServiceController::class, 'store'])->middleware(['auth:sanctum', 'isBarber']);
+
+    Route::delete('/{service}/delete', [ServiceController::class, 'destroy'])->middleware(['auth:sanctum', 'isBarber']);
 });
 
 Route::prefix('appointments')->group(function () {
+    Route::get('/', [AppointmentsController::class, 'index'])->middleware(['auth:sanctum', 'isBarber']);
     Route::post('store', [AppointmentsController::class, 'store'])->middleware('auth:sanctum');
     Route::delete('{appointment}/delete', [AppointmentsController::class, 'destroy'])->middleware(['auth:sanctum', 'isAppointmentStakeholder']);
 });

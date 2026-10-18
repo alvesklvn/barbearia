@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAppointmentRequest;
+use App\Http\Resources\AppointmentsResource;
 use App\Models\Appointment;
 use App\Services\AppointmentService;
 use Illuminate\Http\Request;
@@ -12,6 +13,13 @@ class AppointmentsController extends Controller
     public function __construct(private AppointmentService $service)
     {
         
+    }
+
+    public function index(Request $request)
+    {
+        $user = $request->user();
+        $appointments = Appointment::where('barber_id', $user->id)->get();
+        return AppointmentsResource::collection($appointments);
     }
 
     public function store(StoreAppointmentRequest $request)
